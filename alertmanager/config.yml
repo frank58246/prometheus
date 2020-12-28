@@ -1,0 +1,13 @@
+route:
+     receiver: 'slack'
+
+receivers:
+  - name: 'slack'    
+    slack_configs:
+      - api_url: "https://hooks.slack.com/services/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"
+        channel: "#test"
+        text: "{{ range .Alerts }} {{ .Annotations.description}}\n {{end}} {{ .CommonAnnotations.username}} <{{.CommonAnnotations.link}}| click here>"
+        title: "{{.CommonAnnotations.summary}}"
+        title_link: "{{.CommonAnnotations.link}}"
+        color: "{{.CommonAnnotations.color}}"
+        send_resolved: true	
